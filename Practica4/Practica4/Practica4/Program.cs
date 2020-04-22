@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using Logica;
 
 namespace Practica4
@@ -107,12 +108,61 @@ namespace Practica4
             }
             return resultado;
         }
+
+        public static bool SaberSiEsMail(this string email)
+        {
+            //Regex regexMail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+           
+            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email,expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                   return true;
+                }
+                else
+                {
+                   return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
     }
+
+    //----------------------DELEGADOS------------------------------
+    class Delegado
+    {
+        public delegate string IdentificationNumero(int numero);
+    }
+
+    class Ejemplo
+    {
+        public string TipoNumero(int valorNumerico)
+        {
+            return valorNumerico > 0 ? "positivo" : valorNumerico < 0 ? "negativo" : "cero";
+        }                                   
+    }
+
+    class OtroEjemplo
+    {
+        public static string TipoNumero(int valorNumerico)
+        {
+            return valorNumerico > 0 ? "+" : valorNumerico < 0 ? "-" : "";
+        }                                   
+    }
+    //-------------------------------------------------------------------------
+
 
     class Program
     {
         static void Main(string[] args)
         {
+            /*
             //--------------------------        1       -------------------------------
             Palabra unaPalabra = new Palabra();
             unaPalabra.elString = Console.ReadLine();
@@ -129,8 +179,23 @@ namespace Practica4
             a[2] = "va?";
 
             Console.WriteLine(Extension.CrearStringDeUnArray(a, '/'));
+            //------------------------------- -------------------------------
+            Console.WriteLine("Ingrese su mail");
+            string email = "ulisescrave}{ro95@gmail.com";
+            if (Extension.SaberSiEsMail(email))
+	        {
+                Console.WriteLine("Escrito correctamente");
+	        }else
+            {
+                Console.WriteLine("Escrito mal");
+            }
+            //------------------------------------------------------------
+            */
 
+            //--------------------------------------------------------------------
+            Ejemplo ejemplo = new Ejemplo();
 
+            
 
             Console.ReadLine();
         }
