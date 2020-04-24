@@ -98,40 +98,60 @@ namespace Practica4
             for (int i = 0; i < (a.Count()); i++)
             {
                 if (i == 0)
-                {
                     resultado = a[i];
-                }
                 else
-                {
                     resultado = resultado + separador + a[i]; 
-                }
             }
             return resultado;
         }
 
         public static bool SaberSiEsMail(this string email)
         {
-            //Regex regexMail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Regex regexMail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            return regexMail.IsMatch(email);
            
-            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            /*string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
             if (Regex.IsMatch(email,expresion))
             {
                 if (Regex.Replace(email, expresion, String.Empty).Length == 0)
-                {
                    return true;
-                }
                 else
-                {
                    return false;
-                }
             }
             else
             {
                 return false;
-            }
+            }*/
         }
 
 
+
+    }
+
+    public class Cliente
+    {
+        public string nombre { get; set; }
+        public int cuit { get; set; }
+        public double saldo { get; set; }
+
+        public static Cliente operator -(Cliente cliente1, Cliente cliente2)
+        {
+            cliente1.saldo = (cliente1.cuit == cliente2.cuit) ? cliente1.saldo - cliente2.saldo : Math.Max(cliente1.saldo, cliente2.saldo);
+            return cliente1;            
+        }
+    }
+
+    public static class Temperatura
+    {
+        public static Double FarenheitACelcius(Double t)
+        {
+            return t / 2.12;
+        }
+
+        public static Double CelciusAFarenheit(Double t)
+        {
+            return t * 2.12;
+        }
     }
 
     //----------------------DELEGADOS------------------------------
@@ -162,7 +182,7 @@ namespace Practica4
     {
         static void Main(string[] args)
         {
-            /*
+            
             //--------------------------        1       -------------------------------
             Palabra unaPalabra = new Palabra();
             unaPalabra.elString = Console.ReadLine();
@@ -190,7 +210,7 @@ namespace Practica4
                 Console.WriteLine("Escrito mal");
             }
             //------------------------------------------------------------
-            */
+            
 
             //--------------------------------------------------------------------
             Ejemplo ejemplo = new Ejemplo();
