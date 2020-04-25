@@ -6,8 +6,25 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Class1
+    public sealed class Singleton
     {
+        private readonly static Singleton _intance = new Singleton();
 
+        private Singleton()
+        {
+
+        }
+        /*
+        public static Singleton Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Singleton();
+                }
+                return _intance;
+            }
+        } */
     }
 }
