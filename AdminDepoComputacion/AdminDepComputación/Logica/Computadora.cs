@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Computadora : Producto
+    public class Computadora : Producto
     {
         public string descripProcesador { get; set; }
         public Enumenador.MemoriaRam memoriaRam { get; set; }
         public string fabricante { get; set; }
 
-        //los guiones no hacen falta
-        public Computadora(string _modelo, string _marca, int _numSerie) : base(_modelo, _marca, _numSerie)
+        public Computadora(string modelo, string marca, int numSerie, string descripProcesador, Enumenador.MemoriaRam memoriaRam, string fabricante) : base(modelo, marca, numSerie)
         {
-
+            this.descripProcesador = descripProcesador;
+            this.memoriaRam = memoriaRam;
+            this.fabricante = fabricante;
         }
 
         public override string ObtenerDescripcion()

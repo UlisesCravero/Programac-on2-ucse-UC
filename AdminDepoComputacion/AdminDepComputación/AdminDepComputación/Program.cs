@@ -13,5 +13,19 @@ namespace AdminDepComputación
         {
 
         }
+
+        static void notificacionEventoProducto(Object producto, EventArgs e)
+        {
+            if (producto is Monitor)
+            {
+                Monitor unMonitor = producto as Monitor;
+                Console.WriteLine($"Producto eliminado/eliminado - {unMonitor.ObtenerDescripcion()}");
+            }
+            else
+            {
+                Computadora unaComputadora = producto as Computadora;
+                Console.WriteLine($"Producto eliminado/eliminado - {unaComputadora.ObtenerDescripcion()}");
+            }
+        }
     }
 }

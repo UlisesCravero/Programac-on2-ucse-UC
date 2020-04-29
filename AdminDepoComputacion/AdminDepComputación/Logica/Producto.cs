@@ -12,6 +12,8 @@ namespace Logica
         protected string marca { get; set; }
         protected int numSerie { get; set; }
         public string id { get; } 
+
+
     
         public Producto(string _modelo, string _marca, int _numSerie)
         {

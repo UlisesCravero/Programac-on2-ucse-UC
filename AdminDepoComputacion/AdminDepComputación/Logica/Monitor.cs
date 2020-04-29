@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Monitor : Producto
+    public class Monitor : Producto
     {
         private int anioFabricacion { get; set; }
         private int? pulgadas { get; set; }
