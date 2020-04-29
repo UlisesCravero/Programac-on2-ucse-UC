@@ -8,41 +8,42 @@ namespace Logica
 {
     public class Deposito
     {
-        List<Producto> produrctos;
+        List<Producto> Todosproductos;
+        List<Monitor> monitores = new List<Monitor>();
+        List<Computadora> computadoras = new List<Computadora>();
 
         public EventHandler notificacionProducto;
         
-        //Este metodo agrega al listado pero no publica evento
         public void addProducto(Monitor unMonitor)
         {
-            produrctos.Add(unMonitor);
+            Todosproductos.Add(unMonitor);
             notificacionProducto(unMonitor, new EventArgs());
         }
-        //Este metodo agrega al listado pero no publica evento
+        
         public void addProducto(Computadora unComputadora)
         {
-            produrctos.Add(unComputadora);
+            Todosproductos.Add(unComputadora);
             notificacionProducto(unComputadora, new EventArgs());
         }
 
         public void deleteProducto(string _id)
         {
-
-            Producto p = produrctos.Find(x => x.id == _id);
+            Producto p = Todosproductos.Find(x => x.id == _id);
             if (p != null)
             {
-                produrctos.Remove(p);
+                Todosproductos.Remove(p);
             }
             notificacionProducto(p, new EventArgs());
         }
 
-        //Debe retornar una lista de objetos, como por ejemplo List<Producto>
-        public List<string> obtenerListaProductos()
+        public List<Producto> obtenerListaProductos()
         {
-            List<string> productosOrdenados = new List<string>();
-            produrctos.ForEach(unProducto => productosOrdenados.Add(unProducto.ObtenerDescripcion()));
-            productosOrdenados.Sort();
-            return productosOrdenados;
+            List<Producto> productos = new List<Producto>();
+
+            productos.AddRange(this.monitores);
+            productos.AddRange(this.computadoras);
+
+            return productos.OrderByDescending(x => x is Computadora).ToList();
         }
     }
 }

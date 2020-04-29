@@ -11,10 +11,10 @@ namespace Logica
         private int anioFabricacion { get; set; }
         private int? pulgadas { get; set; }
 
-        public Monitor(string _modelo, string _marca, int _numSerie, int _anioFabricacion, int _pulgadas ) : base(_modelo, _marca, _numSerie)
+        public Monitor(string modelo, string marca, int numSerie, int anioFabricacion, int pulgadas ) : base(modelo, marca, numSerie)
         {
-            this.anioFabricacion = _anioFabricacion;
-            this.pulgadas = _pulgadas;
+            this.anioFabricacion = anioFabricacion;
+            this.pulgadas = pulgadas;
         }
         //podria ser una propiedad de solo lectura tambien
         public bool esNuevo()
