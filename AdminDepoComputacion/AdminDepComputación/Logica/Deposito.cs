@@ -10,12 +10,13 @@ namespace Logica
     {
         List<Producto> produrctos;
         
+        //Este metodo agrega al listado pero no publica evento
         public void addProducto(Monitor unMonitor)
         {
             // evento
             produrctos.Add(unMonitor);
         }
-
+        //Este metodo agrega al listado pero no publica evento
         public void addProducto(Computadora unComputadora)
         {
             // evento
@@ -31,6 +32,7 @@ namespace Logica
             }
         }
 
+        //Debe retornar una lista de objetos, como por ejemplo List<Producto>
         public List<string> obtenerListaProductos()
         {
             List<string> productosOrdenados = new List<string>();

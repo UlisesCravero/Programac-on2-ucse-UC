@@ -12,6 +12,7 @@ namespace Logica
         public Enumenador.MemoriaRam memoriaRam { get; set; }
         public string fabricante { get; set; }
 
+        //los guiones no hacen falta
         public Computadora(string _modelo, string _marca, int _numSerie) : base(_modelo, _marca, _numSerie)
         {
 

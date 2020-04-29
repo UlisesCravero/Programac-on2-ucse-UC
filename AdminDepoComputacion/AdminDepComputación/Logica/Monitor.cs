@@ -16,12 +16,12 @@ namespace Logica
             this.anioFabricacion = _anioFabricacion;
             this.pulgadas = _pulgadas;
         }
-
+        //podria ser una propiedad de solo lectura tambien
         public bool esNuevo()
         {
             return anioFabricacion == DateTime.Now.Year;
         }
-
+        //podria ser una propiedad de solo lectura tambien
         public override string ObtenerDescripcion()
         {
             return $"Monitor {marca} - {modelo} - {pulgadas}";
